@@ -1,15 +1,11 @@
-
-from ngsolve import *
+from ngsolve import Mesh, H1, GridFunction, x, y
 from netgen.occ import unit_square
 
 # Create a mesh
 mesh = Mesh(unit_square.GenerateMesh(maxh=0.4))
 
 # Define a finite element space
-fes = H1(mesh,
-        order=3,
-        #dirichlet="left|bottom|right|top",
-        autoupdate=True)
+fes = H1(mesh, order=3, autoupdate=True)
 
 # Define a grid function
 gf_u1 = GridFunction(fes, autoupdate=True)
